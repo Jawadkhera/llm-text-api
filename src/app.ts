@@ -20,6 +20,15 @@ export function createApp(config: Config, provider: LLMProvider = createProvider
   app.use(requestLogger);
   app.use(express.json({ limit: '10kb' }));
 
+  app.get('/', (_req, res) => {
+    res.json({
+      name: 'llm-text-api',
+      status: 'ok',
+      endpoints: ['GET /health', 'POST /api/generate'],
+      docs: 'https://github.com/Jawadkhera/llm-text-api',
+    });
+  });
+
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok' });
   });

@@ -28,6 +28,10 @@ The tests run against the mock provider and a stubbed `fetch`, so they don't hit
 
 ## API
 
+### GET /
+
+No auth. Returns the service name, available endpoints and a link to this repo.
+
 ### GET /health
 
 No auth. Returns `{ "status": "ok" }`.
