@@ -5,7 +5,7 @@
   "description": "Small HTTP API that sends text to an LLM (Anthropic or OpenAI) and returns the reply as JSON.",
   "type": "module",
   "engines": {
-    "node": ">=22.12"
+    "node": ">=22.12 <25"
   },
   "scripts": {
     "dev": "tsx watch src/index.ts",

@@ -1,0 +1,19 @@
+# Render Blueprint. Values for `sync: false` variables are entered in the Render
+# Dashboard when the Blueprint is first created; they are never stored in this file.
+services:
+  - type: web
+    name: llm-text-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: SERVICE_API_KEY
+        sync: false
+      - key: LLM_PROVIDER # anthropic | openai | mock
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false

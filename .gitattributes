@@ -1,0 +1,2 @@
+# Keep LF line endings so the shell script runs on Linux/macOS even if committed from Windows
+* text=auto eol=lf
