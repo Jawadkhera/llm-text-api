@@ -4,7 +4,7 @@ import type { LLMProvider } from './types.js';
 const estimateTokens = (s: string) => Math.ceil(s.length / 4);
 
 /** Returns a canned reply without calling any API. Used for tests and local runs without a key. */
-export function createMockProvider(): LLMProvider {
+export function createMockProvider(model = 'mock-model'): LLMProvider {
   return {
     name: 'mock',
     async generate({ text, system }) {
@@ -12,7 +12,7 @@ export function createMockProvider(): LLMProvider {
       const output = `[mock] You said: "${preview}"`;
       return {
         output,
-        model: 'mock-model',
+        model,
         usage: {
           inputTokens: estimateTokens(text) + estimateTokens(system ?? ''),
           outputTokens: estimateTokens(output),

@@ -20,5 +20,5 @@ app.listen(config.port, (err) => {
     console.error(`Failed to start server: ${err.message}`);
     process.exit(1);
   }
-  console.log(`Listening on port ${config.port} (provider: ${config.provider})`);
+  console.log(`Listening on port ${config.port} (provider: ${config.provider}, model: ${config.model})`);
 });

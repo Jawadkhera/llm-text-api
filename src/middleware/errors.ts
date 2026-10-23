@@ -56,7 +56,7 @@ function logServerError(requestId: string, apiError: ApiError) {
   const cause = apiError.cause;
   const entry: Record<string, unknown> = { requestId, level: 'error', code: apiError.code };
   if (cause instanceof Error) {
-    entry.cause = cause.name;
+    entry.cause = cause.constructor.name; // e.g. AuthenticationError (SDK errors keep name "Error")
     if ('status' in cause) entry.upstreamStatus = cause.status;
     // Our own bugs need a stack trace; provider errors do not.
     if (apiError.code === 'INTERNAL_ERROR') entry.stack = cause.stack;

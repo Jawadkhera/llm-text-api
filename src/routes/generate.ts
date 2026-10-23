@@ -47,6 +47,7 @@ async function callProvider(
   try {
     return await Promise.race([provider.generate({ ...input, signal }), timedOut]);
   } catch (err) {
+    if (err instanceof ApiError) throw err;
     if (signal.aborted) {
       throw new ApiError(504, 'UPSTREAM_TIMEOUT', 'The model provider did not respond in time', {
         cause: err,

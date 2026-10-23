@@ -7,6 +7,7 @@ export function testConfig(overrides: Partial<Config> = {}): Config {
     port: 0,
     serviceApiKey: TEST_API_KEY,
     provider: 'mock',
+    model: 'mock-model',
     upstreamTimeoutMs: 30_000,
     ...overrides,
   };
