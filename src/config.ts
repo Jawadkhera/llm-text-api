@@ -7,6 +7,8 @@ export interface Config {
   provider: ProviderName;
   /** API key for the selected provider. Undefined for the mock provider. */
   providerApiKey?: string;
+  /** How long to wait for the provider before returning 504. */
+  upstreamTimeoutMs: number;
 }
 
 export class ConfigError extends Error {}
@@ -48,5 +50,5 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     throw new ConfigError(`Invalid PORT "${env.PORT}". Expected an integer between 1 and 65535`);
   }
 
-  return { port, serviceApiKey, provider, providerApiKey };
+  return { port, serviceApiKey, provider, providerApiKey, upstreamTimeoutMs: 30_000 };
 }

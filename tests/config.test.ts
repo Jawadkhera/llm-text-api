@@ -10,6 +10,7 @@ describe('loadConfig', () => {
       serviceApiKey: 'secret',
       provider: 'mock',
       providerApiKey: undefined,
+      upstreamTimeoutMs: 30_000,
     });
   });
 
